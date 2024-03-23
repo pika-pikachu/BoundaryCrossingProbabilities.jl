@@ -66,10 +66,10 @@ function FKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false)
                 dh = grid_t[1] - grid_t[2]
                 if p.absorb == true
                     pointCount = vcat(pointCount, length(grid_t) - 1) # drop the lower boundary point
-                    u_xyz = solutionGenerator(u_xyz, grid_t[1:(end-1)], k, P[1:(end-1)]/dh, gU, gL)
+                    u_xyz = solutionGenerator(u_xyz, grid_t[1:(end-1)], k, P[1:(end-1)]/dh, gU, gL, p)
                 else
                     pointCount = vcat(pointCount, length(grid_t)) # drop the lower boundary point
-                    u_xyz = solutionGenerator(u_xyz, grid_t, k, P/dh, gU, gL)
+                    u_xyz = solutionGenerator(u_xyz, grid_t, k, P/dh, gU, gL, p)
                 end
             end
         end
@@ -99,7 +99,7 @@ v(t,L(t)) = 0
 v(T,x) = 1 for x ∈ (L(t),U(t))
 
 """ -> 
-function BKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false, method = "backward")
+function BKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false, returnInterpolation = false, method = "backward")
 P = ones(length(gridLattice(p.n, p, gU, gL)))'
 pointCount = 1 # initialise number of points for a given t_k
 u_xyz = Array{Float64}(undef, 0, 3)
@@ -121,7 +121,14 @@ u_xyz = Array{Float64}(undef, 0, 3)
     if plot3DFlag == true
         plotEngine(u_xyz, pointCount, method)
     end
-    return u_xyz
+	if returnInterpolation == true
+		x,y,z = real(u_xyz)[:,1], real(u_xyz)[:,2], real(u_xyz)[:,3] 
+		spl = Spline2D(x,y,z; kx=3, ky=3, s=1e-4)
+		v(s,x) = evalgrid(spl,[s],[x])[1]	
+		return u_xyz, v
+	else
+		return u_xyz
+	end
 end;
 
 @doc """
@@ -132,7 +139,7 @@ Returns a typle containing:
 	2. number of points corresponding to the kth time slice
 
 """ -> 
-function solutionGenerator(u_xyz, space_mesh, k, P, gU, gL, p::MeshParams,scale = false)
+function solutionGenerator(u_xyz, space_mesh, k, P, gU, gL, p::MeshParams, scale = false)
 	n_length = length(P')
 	if (n_length == 1) & (k == 0) 
 		x0 = 0

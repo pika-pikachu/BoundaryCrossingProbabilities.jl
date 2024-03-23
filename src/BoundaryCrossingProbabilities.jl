@@ -9,6 +9,7 @@ using Distributions # used for path simulations
 using FastGaussQuadrature # used to get Gaussian integrals
 using SpecialFunctions # used to get sine integral
 using TaylorSeries # higher order derivatives
+using Dierckx
 
 struct MeshParams
 	n::Int64 # Number of nodes in time partition
