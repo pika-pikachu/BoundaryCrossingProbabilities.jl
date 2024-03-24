@@ -1,10 +1,10 @@
 # BoundaryCrossingProbability.jl
 Computes the boundary crossing probability for a general diffusion process and time-dependent boundary.
 
-To install the BoundaryCrossingProbabilities Julia package, open Julia,  press "]" and type 
+To install the BoundaryCrossingProbabilities package, run the following at the Julia REPL
 
 ```
-add BoundaryCrossingProbabilities
+Pkg.add("BoundaryCrossingProbabilities")
 ```
 
 To import the package, type 
