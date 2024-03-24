@@ -1,10 +1,10 @@
 # BoundaryCrossingProbability.jl
 
-Computes the boundary crossing probability for a general diffusion process and time-dependent boundary.
+Computes an approximation of the boundary crossing probability for a general diffusion process and time-dependent boundary using a Brownian bridge corrected Markov chain algorithm proposed in Liang & Borovkov (2023).
 
 ## Background
 
-For $T>0,$ $x \in \mathbb{R},$ let $X$ be a solution to the following stochastic equation:
+For $T>0,$ $x \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
 
 $$ \begin{cases}
 dX_t = \mu(t,X_t)\,dt +\sigma(t,X_t)\,dW_t, \quad t \in (0,T),\\ 
