@@ -4,7 +4,7 @@ Computes an approximation of the boundary crossing probability for a general dif
 
 ## Background
 
-For $T>0,$ $x \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
+For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
 
 $$ \begin{cases}
 dX_t = \mu(t,X_t)\,dt +\sigma(t,X_t)\,dW_t, \quad t \in (0,T),\\ 
