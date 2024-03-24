@@ -19,15 +19,15 @@ $$
 	\mathbf{P}(g_-(t) < X_t < g_+(t) , t \in [0,T]).
 $$
 
-Moreover, the tool can actually compute expressions of the form
+Moreover, the tool can also compute approximations of expressions of the form
 
 $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s), s \in [t,T] | X_t = x], $$
 
-and the solution to the forward PDE is given by the taboo transition density
+and 
 
-$$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds}\mathbf{1}( X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t])|X_0 = x_0], $$
+$$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds}; X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t] | X_0 = x_0], $$
 
-which are known to be probabilistic solutions to the following parabolic PDEs:
+which are known to be probabilistic solutions to the following boundary-valued problems:
 
 $$ Lv = 0, \quad v(t,g_{\pm}(t)) =0, \quad v(T,x)= \psi(x). $$
 
@@ -35,8 +35,9 @@ $$ L^*u = 0, \quad u(t,g_{\pm}(t)) =0, \quad u(0,x)= \delta_{x_0}(x) $$
 
 where 
 
-$$L f(s,x) := \dot{f}(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}f''(s,x).$$
+$$L f(s,x) := \dot{f}(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}f''(s,x)$$
 
+and $L^*$ denotes the adjoint of $L$.
 
 ## Code
 
