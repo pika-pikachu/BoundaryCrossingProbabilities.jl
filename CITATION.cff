@@ -1,0 +1,14 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Liang"
+  given-names: "Vincen"
+  orcid: "https://orcid.org/0009-0009-3524-9598"
+- family-names: "Borovokov"
+  given-names: "Konstantin"
+  orcid: "https://orcid.org/0000-0003-1258-7120"
+title: "On Markov chain approximations for computing boundary crossing probabilities of diffusion processes"
+version: 1.0.0
+doi: 10.1017/jpr.2023.11
+date-released: 2023-12-18
+url: "https://github.com/pika-pikachu/BoundaryCrossingProbabilities.jl"

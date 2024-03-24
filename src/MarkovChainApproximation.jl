@@ -44,7 +44,7 @@ u(t,g-(t)) = 0
 u(0,x) = δ(x-x0) for x ∈ (g-(t),g+(t))
 
 """ -> 
-function FKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false)
+function FKE(p::MeshParams, gU::Function, gL::Function, returnInterpolation = false, plot3DFlag = false)
 #try 
     P = zeros(length(gridLattice(0,p,gU,gL)))' # initial distribution
     P[end] = 1 # Dirac mass at zero
@@ -62,7 +62,7 @@ function FKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false)
                 λ, 
                 h(k, p, gU, gL)) # weight vector
             P = (P * transitionMatrix(k,p,gU,gL)) .* w' 
-            if plot3DFlag == true
+            if plot3DFlag == true || returnInterpolation == true
                 dh = grid_t[1] - grid_t[2]
                 if p.absorb == true
                     pointCount = vcat(pointCount, length(grid_t) - 1) # drop the lower boundary point
@@ -77,11 +77,19 @@ function FKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false)
         if plot3DFlag == true
             plotEngine(u_xyz, pointCount, "forward")
         end
-        if p.target_set_bool == true
-            return sum(P[2:(end-1)]) + (P[1] + P[end])/2
-        else
-            return P
-        end
+		if returnInterpolation == true
+			x,y,z = real(u_xyz)[:,1], real(u_xyz)[:,2], real(u_xyz)[:,3] 
+			spl = Spline2D(x,y,z; kx=3, ky=3, s=1e-4)
+			u(s,x) = evalgrid(spl,[s],[x])[1]	
+			return u_xyz, u
+		else
+			if p.target_set_bool == true
+				return sum(P[2:(end-1)]) + (P[1] + P[end])/2
+			else
+				return P
+			end
+		end
+
 #catch err
 #    return 0 
 #end
@@ -99,7 +107,7 @@ v(t,L(t)) = 0
 v(T,x) = 1 for x ∈ (L(t),U(t))
 
 """ -> 
-function BKE(p::MeshParams, gU::Function, gL::Function, plot3DFlag = false, returnInterpolation = false, method = "backward")
+function BKE(p::MeshParams, gU::Function, gL::Function, returnInterpolation = false, plot3DFlag = false, method = "backward")
 P = ones(length(gridLattice(p.n, p, gU, gL)))'
 pointCount = 1 # initialise number of points for a given t_k
 u_xyz = Array{Float64}(undef, 0, 3)
@@ -108,7 +116,7 @@ u_xyz = Array{Float64}(undef, 0, 3)
 		grid_s = gridLattice(k-1, p, gU, gL) # grid at time t
 		grid_t = gridLattice(k, p, gU, gL) # grid at time t
 		P = P .* weightIntegration(length(grid_t), p.integration_method)' * transitionMatrix(k,p,gU,gL)'
-        if plot3DFlag == true 
+        if plot3DFlag == true || returnInterpolation == true
             if (p.absorb == true) & (k > 1)
                 pointCount = vcat(pointCount, length(grid_s) - 1) # drop the lower boundary point
                 u_xyz = solutionGenerator(u_xyz, grid_s[1:(end-1)], k - 1, P[1:(end-1)], gU, gL)

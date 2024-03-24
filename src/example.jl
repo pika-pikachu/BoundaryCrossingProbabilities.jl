@@ -10,23 +10,23 @@ T = 1.0 # Terminal Time
 x0 = 0 # Initial condition
 
 p = BoundaryCrossingProbabilities.MeshParams(
-	25, # n
-	0, # δ, 1/2 + δ is the space step power before the final time
-	1, # pn power of the space step at the final time
-	T, # T # Terminal time
-	x0, # x0 Initial condition
-	2, #γ,
-	"Brownian", #bridge correction,
-	false, #one sided boundary
-	b, # Drift coefficient
+    x0, # x0 Initial condition
+    T, # Terminal time	
+    b, # Drift coefficient
 	σ, # Diffusion coefficient
     V, # Potential
-	false, # no target set
-	[1.2,3], # Target set
+    false, # no target set
+	[1.2,3], # Target set X_T \in [a,b]
+    "Brownian", #bridge correction,
+	false, # one sided boundary
+    25, # number of time steps 
+	0, # δ, 1/2 + δ is the space step power before the final time
+	1, # pn power of the space step at the final time
+	2, # γ, constant space scaling
 	"trapezoidal" # integration scheme
 	);
 
-function gU(t, a=2, theta = 2)
+function gU(t, a = 2, theta = 2)
     if t <= 0.00634616586979
         return theta/2
     else
@@ -34,7 +34,7 @@ function gU(t, a=2, theta = 2)
     end
 end;
 
-function gL(t, a=2, theta = 2)
+function gL(t, a = 2, theta = 2)
     if t <= 0.00634616586979
         return -theta/2
     else
@@ -42,7 +42,15 @@ function gL(t, a=2, theta = 2)
     end
 end;
 
-soltn_BKE, v = BoundaryCrossingProbabilities.BKE(p, t-> 2, t-> -2, true, true);
-soltn_FKE = BoundaryCrossingProbabilities.FKE(p, t-> 2, t-> -2, true);
+plotFlag = true
+
+soltn_BKE, v = BoundaryCrossingProbabilities.BKE(p, t -> gU(t), t -> gL(t), true, plotFlag);
+soltn_FKE, u = BoundaryCrossingProbabilities.FKE(p, t -> gU(t), t -> gL(t), true, plotFlag);
+
+
+soltn_BKE
+soltn_FKE
 
 v(0,0)
+
+u(1,2)
