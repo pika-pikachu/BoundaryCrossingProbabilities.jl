@@ -7,7 +7,7 @@ Computes an approximation of the boundary crossing probability for a general dif
 For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
 
 $$ \begin{cases}
-dX_t = \mu(t,X_t)\,dt +\sigma(t,X_t)\,dW_t, \quad t \in (0,T),\\ 
+dX_t = \mu(t,X_t)dt +\sigma(t,X_t)dW_t, \quad t \in (0,T),\\ 
 X_0 = x_0.
 \end{cases}$$
 
@@ -16,7 +16,7 @@ where we assume $\mu$ and $\sigma$ satisfy the usual sufficient for the existenc
 For two continuous functions $g_-$ and $g_+,$ this package computes an approximation of the non-crossing probability
 
 $$ 
-	\mathbf{P}(g_-(t) < X_t < g_+(t) , t\in [0,T]).
+	\mathbf{P}(g_-(t) < X_t < g_+(t) , t \in [0,T]).
 $$
 
 Moreover, the tool can actually compute expressions of the form
