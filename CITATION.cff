@@ -2,7 +2,7 @@ cff-version: 1.0.0
 message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Liang"
-  given-names: "Vincen"
+  given-names: "Vincent"
   orcid: "https://orcid.org/0009-0009-3524-9598"
 - family-names: "Borovokov"
   given-names: "Konstantin"
