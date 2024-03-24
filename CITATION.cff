@@ -1,6 +1,5 @@
 cff-version: 1.0.0
 message: "If you use this software, please cite it as below."
-type: article
 authors:
 - family-names: "Liang"
   given-names: "Vincent"
@@ -13,3 +12,21 @@ version: 1.0.0
 doi: 10.1017/jpr.2023.11
 date-released: 2023-12-18
 url: "https://github.com/pika-pikachu/BoundaryCrossingProbabilities.jl"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Liang"
+    given-names: "Vincent"
+    orcid: "https://orcid.org/0009-0009-3524-9598"
+  - family-names: "Borovkov"
+    given-names: "Konstantin"
+    orcid: "https://orcid.org/0000-0003-1258-7120"
+  doi: "10.1017/jpr.2023.11"
+  journal: "Journal of Applied Probability"
+  month: 12
+  start: 1386 # First page number
+  end: 1415 # Last page number
+  title: "On Markov chain approximations for computing boundary crossing probabilities of diffusion processes"
+  issue: 60
+  volume: 4
+  year: 2023
