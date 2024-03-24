@@ -3,27 +3,27 @@ include("./BoundaryCrossingProbabilities.jl")
 import .BoundaryCrossingProbabilities
 using PyPlot
 
+x0 = 0 # Initial condition
 b(t,x) = 0 # Drift coefficient
 σ(t,x) = 1 # Diffusion coefficient
 V(t,x) = (1im)*x^2  # Potential
 T = 1.0 # Terminal Time
-x0 = 0 # Initial condition
 
 p = BoundaryCrossingProbabilities.MeshParams(
     x0, # x0 Initial condition
     T, # Terminal time	
     b, # Drift coefficient
-	σ, # Diffusion coefficient
+    σ, # Diffusion coefficient
     V, # Potential
     false, # no target set
-	[1.2,3], # Target set X_T \in [a,b]
+    [1.2,3], # Target set X_T \in [a,b]
     "Brownian", #bridge correction,
-	false, # one sided boundary
+    false, # one sided boundary
     25, # number of time steps 
-	0, # δ, 1/2 + δ is the space step power before the final time
-	1, # pn power of the space step at the final time
-	2, # γ, constant space scaling
-	"trapezoidal" # integration scheme
+    0, # δ, 1/2 + δ is the space step power before the final time
+    1, # pn power of the space step at the final time
+    2, # γ, constant space scaling
+    "trapezoidal" # integration scheme
 	);
 
 function gU(t, a = 2, theta = 2)
