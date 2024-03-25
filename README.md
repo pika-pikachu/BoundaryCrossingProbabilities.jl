@@ -81,21 +81,8 @@ p = BoundaryCrossingProbabilities.MeshParams(
 Then we define the upper and lower boundaries
 
 ```
-function gU(t, a = 2, theta = 2)
-    if t <= 0.00634616586979
-        return theta/2
-    else
-        return t/theta*acosh(a*exp(theta^2/(2t)))
-    end
-end;
-
-function gL(t, a = 2, theta = 2)
-    if t <= 0.00634616586979
-        return -theta/2
-    else
-        return -t/theta*acosh(a*exp(theta^2/(2t)))
-    end
-end;
+gU(t) = 4 - t^2
+gL(t) = -4 + t^2
 ```
 
 Now we can obtain the solution to the problem. 
