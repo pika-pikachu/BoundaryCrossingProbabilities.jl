@@ -1,4 +1,4 @@
-# BoundaryCrossingProbability.jl
+# BoundaryCrossingProbabilities.jl
 
 This is a julia package for computing accurate approximations of the time-dependent boundary crossing probability for a general diffusion process. The implemented algorithm is based on a Brownian bridge corrected Markov chain algorithm proposed in Liang & Borovkov (2023).
 
