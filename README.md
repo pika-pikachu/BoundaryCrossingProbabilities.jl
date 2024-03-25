@@ -23,7 +23,7 @@ Moreover, the tool can actually compute expressions of the form
 
 $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s), s \in [t,T] | X_t = x], $$
 
-and the solution to the forward PDE is given by the taboo transition density
+and the (discounted) taboo transition density
 
 $$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds}\mathbf{1}( X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t])|X_0 = x_0], $$
 
