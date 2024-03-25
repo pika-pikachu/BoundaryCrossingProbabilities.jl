@@ -7,7 +7,7 @@ This is a julia package for computing accurate approximations of the time-depend
 For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
 
 $$ \begin{cases}
-dX_t = \mu(t,X_t)\,dt +\sigma(t,X_t)\,dW_t, \quad t \in (0,T),\\ 
+dX_t = \mu(t,X_t)dt +\sigma(t,X_t)dW_t, \quad t \in (0,T),\\ 
 X_0 = x_0.
 \end{cases}$$
 
