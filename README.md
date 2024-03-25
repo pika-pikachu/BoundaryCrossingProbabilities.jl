@@ -35,7 +35,7 @@ $$ L^*u = 0, \quad u(t,g_{\pm}(t)) =0, \quad u(0,x)= \delta_{x_0}(x) $$
 
 where 
 
-$$L f(s,x) := \dot{f}(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}\sigma^2(s,x)f''(s,x).$$
+$$L f(s,x) := \dot{f}(s,x) - V(s,x)f(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}\sigma^2(s,x)f''(s,x).$$
 
 
 ## Code
