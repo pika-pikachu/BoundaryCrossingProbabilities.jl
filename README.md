@@ -43,7 +43,8 @@ $$L f(s,x) := \dot{f}(s,x) - V(s,x)f(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}\sigma
 To install and import the BoundaryCrossingProbabilities package, run the following at the Julia REPL
 
 ```
-Pkg.add("BoundaryCrossingProbabilities")
+using Pkg
+Pkg.add(url = "https://github.com/pika-pikachu/BoundaryCrossingProbabilities.jl")
 using BoundaryCrossingProbabilities
 ```
 
