@@ -25,7 +25,7 @@ $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s
 
 and the (discounted) taboo transition density
 
-$$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds}\mathbf{1}( X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t])|X_0 = x_0], $$
+$$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds} ; X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t]|X_0 = x_0], $$
 
 which are known to be probabilistic solutions to the following parabolic PDEs:
 
