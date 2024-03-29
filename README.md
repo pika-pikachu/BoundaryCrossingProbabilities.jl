@@ -52,7 +52,7 @@ To set up the boundary crossing probability algorithm, we need to specify parame
 
 ```
 x0 = 0 # Initial condition
-b(t,x) = 0 # Drift coefficient
+μ(t,x) = 0 # Drift coefficient
 σ(t,x) = 1 # Diffusion coefficient
 V(t,x) = (1im)*x^2  # Potential
 T = 1.0 # Terminal Time
@@ -64,7 +64,7 @@ Then we set up a Julia Type called MeshParams, which takes in all the diffusion 
 p = BoundaryCrossingProbabilities.MeshParams(
     x0, # x0 Initial condition
     T, # Terminal time	
-    b, # Drift coefficient
+    μ, # Drift coefficient
     σ, # Diffusion coefficient
     V, # Potential
     false, # no target set
@@ -90,9 +90,10 @@ Now we can obtain the solution to the problem.
 
 ```
 plotFlag = true
+interpolationFlag = false
 
-soltn_BKE, v = BoundaryCrossingProbabilities.BKE(p, t -> gU(t), t -> gL(t), true, plotFlag);
-soltn_FKE, u = BoundaryCrossingProbabilities.FKE(p, t -> gU(t), t -> gL(t), true, plotFlag);
+non_crossing_probability, v = BoundaryCrossingProbabilities.BKE(p, t -> gU(t), t -> gL(t), interpolationFlag, plotFlag);
+#soltn_FKE, u = BoundaryCrossingProbabilities.FKE(p, t -> gU(t), t -> gL(t), interpolationFlag, plotFlag);
 ```
 
 ![Screenshot](complex_potential.png)
