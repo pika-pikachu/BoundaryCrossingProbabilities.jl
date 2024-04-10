@@ -50,7 +50,7 @@ Pkg.add(url = "https://github.com/pika-pikachu/BoundaryCrossingProbabilities.jl"
 using BoundaryCrossingProbabilities
 ```
 
-To set up the boundary crossing probability algorithm, we need to specify parameters of the diffusion process (initial position, drift, diffusion and potential), and the time interval. Let's take the Brownian motion example with a complex potential term.
+To set up the boundary crossing probability algorithm, we need to specify parameters of the diffusion process (initial position, drift, diffusion and potential), and the time interval. Let's take the Brownian motion example ($\mu \equiv 0,$ $\sigma \equiv 1$) with a complex potential term $V(t,x):= ix^2$.
 
 ```
 x0 = 0 # Initial condition
