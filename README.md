@@ -4,7 +4,7 @@ This is a julia package for computing accurate approximations of the time-depend
 
 Liang, V. and Borovkov, K.: On Markov chain approximations for computing boundary crossing probabilities of diffusion processes. J. Appl. Probab. 60 1386–1415 (2023).
 
-## Background
+## Time-dependent boundary crossing probabilities of diffusion processes
 
 For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
 
@@ -18,10 +18,10 @@ where we assume $\mu$ and $\sigma$ satisfy the usual sufficient for the existenc
 For two continuous functions $g_-$ and $g_+,$ this package computes an approximation of the non-crossing probability
 
 $$ 
-	\mathbf{P}(g_-(t) < X_t < g_+(t) , t\in [0,T]).
+	F(g_-,g_+) := \mathbf{P}(g_-(t) < X_t < g_+(t) , t\in [0,T]).
 $$
 
-Moreover, the tool can actually compute expressions of the form
+More generally, the tool can compute expressions of the form
 
 $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s), s \in [t,T] | X_t = x], $$
 
@@ -29,7 +29,7 @@ and
 
 $$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds} ; X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t]|X_0 = x_0], $$
 
-which are known to be probabilistic solutions to the following parabolic PDEs:
+which are known to be probabilistic solutions to the Dirichlet problem for the following parabolic PDEs:
 
 $$ Lv = 0, \quad v(t,g_{\pm}(t)) =0, \quad v(T,x)= \psi(x). $$
 
@@ -39,6 +39,13 @@ where
 
 $$L f(s,x) := \dot{f}(s,x) - V(s,x)f(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}\sigma^2(s,x)f''(s,x).$$
 
+## Sensitivity of boundary crossing probabilities with respect to boundary perturbations
+
+It was proved by Liang and Borovkov (2024) that the boundary non-crossing probability functional $F(g) := F(-\infty,g)$ is Gateaux differentiable and the derivative admits the following representation:
+
+$$ \nabla_h F(g) := \lim_{\varepsilon \to 0}\frac{F(g+\varepsilon h) -F(g) }{\varepsilon} = -\int_0^T h(t)v'(t,g(t))f_{\tau}(t),\quad h \in H, \quad g \in C^2.$$
+
+The Markov chain approximation can be used to obtain approximations for $v'(t,g(t))$ and $f_{\tau}(t)$ for all $t \in [0,T].$
 
 ## Code
 
