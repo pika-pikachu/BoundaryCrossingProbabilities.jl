@@ -43,7 +43,7 @@ $$L f(s,x) := \dot{f}(s,x) - V(s,x)f(s,x) + \mu(s,x) f'(s,x) + \frac{1}{2}\sigma
 
 It was proved by Liang and Borovkov (2024) that the boundary non-crossing probability functional $F(g) := F(-\infty,g)$ is Gateaux differentiable and the derivative admits the following representation:
 
-$$ \nabla_h F(g) := \lim_{\varepsilon \to 0}\frac{F(g+\varepsilon h) -F(g) }{\varepsilon} = -\int_0^T h(t)v'(t,g(t))f_{\tau}(t)\,dt,\quad h \in H, \quad g \in C^2.$$
+$$ \nabla_h F(g) := \lim_{\varepsilon \to 0}\frac{F(g+\varepsilon h) -F(g) }{\varepsilon} = -\int_0^T h(t)v'(t,g(t))f_{\tau}(t)dt,\quad h \in H, \quad g \in C^2.$$
 
 The Markov chain approximation can be used to obtain approximations for $v'(t,g(t))$ and $f_{\tau}(t)$ for all $t \in [0,T].$
 
