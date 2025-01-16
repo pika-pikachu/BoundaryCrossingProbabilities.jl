@@ -80,20 +80,20 @@ Next, we set up a Julia Type called MeshParams, which takes in all the diffusion
 
 ```
 p = BoundaryCrossingProbabilities.MeshParams(
-    x0, # x0 Initial condition
+    x0, # Initial condition
     T, # Terminal time	
     μ, # Drift coefficient
     σ, # Diffusion coefficient
     V, # Potential
-    false, # no target set
+    false, # Target set
     [1.2,3], # Target set X_T \in [a,b]
-    "Brownian", #bridge correction,
-    false, # one sided boundary
-    25, # number of time steps 
+    "Brownian", # bridge correction,
+    true, # One sided boundary flag
+    40, # Number of time steps n
     0, # δ, 1/2 + δ is the space step power before the final time
     1, # pn power of the space step at the final time
-    2, # γ, constant space scaling
-    "trapezoidal" # integration scheme
+    1.5, # γ, constant space scaling
+    "trapezoidal" # Integration scheme
 	);
 ```
 
@@ -107,7 +107,7 @@ boundary_crossing_probability = 1 - sum(taboo_transition_density)
 ```
 which returns
 ```
-0.47977033599419694 - 0.0im
+1 - sum(non_crossing_probability)
 ```
 
 ### Example 2: Complex potential
