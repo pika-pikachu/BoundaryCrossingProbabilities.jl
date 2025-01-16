@@ -58,7 +58,6 @@ using BoundaryCrossingProbabilities
 
 In 1969, the statistician H. Daniels applied the method of images to obtain a closed-form expression for the boundary-crossing probability of the Brownian motion for a particular one-sided time-dependent boundary, now commonly known as the <i>Daniels boundary</i>,
 
-
 $$ g(t) = \frac{1}{2} - t \log\left( \frac{1}{4}\left(1 + \sqrt{1 + 8e^{-1/t}}\right) \right),\quad t>0. $$
 
 ```
@@ -66,17 +65,17 @@ gU(t) = 1/2 - t * log(0.25 * (1 + sqrt(1 + 8*exp(-1/t))))
 gL(t) = -3.75 # Assume -3.75 is sufficiently remote from initial position.
 ```
 
-To set up the boundary crossing probability algorithm, we need to specify parameters of the diffusion process (initial position, drift, diffusion and potential), and the time interval. Let's take the Brownian motion example ($\mu \equiv 0,$ $\sigma \equiv 1$).
+Next, we specify parameters of the diffusion process (initial position, drift, diffusion and potential), and the time interval. Let's take the Brownian motion example ($\mu \equiv 0,$ $\sigma \equiv 1$).
 
 ```
 x0 = 0 # Initial condition
 μ(t,x) = 0 # Drift coefficient
 σ(t,x) = 1 # Diffusion coefficient
 V(t,x) = 0  # Potential
-T = 1.0 # Terminal Time
+T = 1.0 # Terminal time
 ```
 
-Next, we set up a Julia Type called MeshParams, which takes in all the diffusion process and Markov chain approximation parameters.
+Next, we set up a Julia Type called <i>MeshParams</i>, which takes in all the parameters to be used in the algorithm.
 
 ```
 p = BoundaryCrossingProbabilities.MeshParams(
@@ -92,7 +91,7 @@ p = BoundaryCrossingProbabilities.MeshParams(
     40, # Number of time steps n
     0, # δ, 1/2 + δ is the space step power before the final time
     1, # pn power of the space step at the final time
-    1.5, # γ, constant space scaling
+    1.5, # γ, space scaling
     "trapezoidal" # Integration scheme
 	);
 ```
