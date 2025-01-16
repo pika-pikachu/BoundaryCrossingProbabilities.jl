@@ -10,7 +10,7 @@ A [Julia](https://julialang.org) package for computing accurate approximations o
 
 ## Boundary crossing probabilities for diffusion processes with time-dependent boundaries
 
-For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation:
+For $T>0,$ $x_0 \in \mathbb{R},$ let $X$ be a solution to the following stochastic differential equation (SDE):
 
 $$ \begin{cases}
 dX_t = \mu(t,X_t)dt +\sigma(t,X_t)dW_t, \quad t \in (0,T),\\ 
@@ -25,7 +25,7 @@ $$
 	F(g_-,g_+) := \mathbf{P}(g_-(t) < X_t < g_+(t) , t\in [0,T]).
 $$
 
-More generally, the package can be used to compute Feynman-Kac type expressions of the form
+More generally, the package can be used to compute [Feynman-Kac type expectations](https://planetmath.org/feynmankacformula) of the form
 
 $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s), s \in [t,T] | X_t = x], $$
 
@@ -33,7 +33,7 @@ and
 
 $$ u(t,x) = \frac{\partial}{\partial x}\mathbf{E}[e^{-\int_0^tV(s,X_s)\,ds} ; X_t \leq x, g_{-}(s) < X_s < g_+(s), s \in [0,t]|X_0 = x_0], $$
 
-which are known to be probabilistic solutions to the Dirichlet problem for the following parabolic PDEs:
+which are known to be probabilistic solutions to the Dirichlet problem for the following parabolic partial differential equations:
 
 $$ Lv = 0, \quad v(t,g_{\pm}(t)) =0, \quad v(T,x)= \psi(x), $$
 
@@ -56,7 +56,7 @@ using BoundaryCrossingProbabilities
 ```
 ### Example 1: Daniels boundary
 
-In 1969, the statistician H. Daniels applied the method of images to obtain a closed-form expression for the boundary-crossing probability of the Brownian motion for a particular one-sided time-dependent boundary, now commonly known as the <i>Daniels boundary</i>,
+In 1969, the statistician H. Daniels applied the method of images to obtain a closed-form expression for the boundary-crossing probability of the Brownian motion for a particular one-sided time-dependent boundary, now commonly known as the [<i>Daniels boundary</i>](https://doi.org/10.2307/3212009),
 
 $$ g(t) = \frac{1}{2} - t \log\left( \frac{1}{4}\left(1 + \sqrt{1 + 8e^{-1/t}}\right) \right),\quad t>0. $$
 
@@ -106,7 +106,7 @@ boundary_crossing_probability = 1 - sum(taboo_transition_density)
 ```
 which returns
 ```
-1 - sum(non_crossing_probability)
+0.47978213105150136 - 0.0im
 ```
 
 ### Example 2: Complex potential
