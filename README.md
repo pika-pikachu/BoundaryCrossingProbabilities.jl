@@ -1,8 +1,12 @@
 # BoundaryCrossingProbabilities.jl
 
-This is a julia package for computing accurate approximations of the time-dependent boundary crossing probability for a general diffusion process. The implemented algorithm is based on a Brownian bridge corrected Markov chain algorithm proposed in: 
+A [Julia](https://julialang.org) package for computing accurate approximations of curvilinear boundary crossing probabilities for diffusion processes on a finite time interval. The implemented algorithm in this package is based on the Brownian bridge corrected Markov chain approximation proposed in: 
 
-Liang, V. and Borovkov, K.: On Markov chain approximations for computing boundary crossing probabilities of diffusion processes. J. Appl. Probab. 60 1386–1415 (2023).
+[Liang, V. and Borovkov, K.: On Markov chain approximations for computing boundary crossing probabilities of diffusion processes. J. Appl. Probab. <b>60</b>, pp. 1386–1415 (2023).](https://doi.org/10.1017/jpr.2023.11)
+
+<b>Authors</b>
+- [Vincent Liang](https://www.linkedin.com/in/liangv/), The University of Melbourne
+- [Konstantin Borovkov](https://scholar.google.com.au/citations?user=UVdJmiMAAAAJ&hl=en), The University of Melbourne
 
 ## Boundary crossing probabilities for diffusion processes with time-dependent boundaries
 
@@ -41,7 +45,9 @@ $$ L f(s,x) := \partial_sf(s,x) - V(s,x)f(s,x) + \mu(s,x) \partial_xf(s,x) + \fr
 
 ## Code tutorial
 
-To install and import the BoundaryCrossingProbabilities package, run the following in the Julia REPL
+### Installation
+
+To install and import the BoundaryCrossingProbabilities package, run the following in the Julia REPL:
 
 ```
 using Pkg
