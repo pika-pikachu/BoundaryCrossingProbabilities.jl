@@ -25,6 +25,8 @@ $$
 	F(g_-,g_+) := \mathbf{P}(g_-(t) < X_t < g_+(t) , t\in [0,T]).
 $$
 
+## Feynman-Kac type expectations
+
 More generally, the package can be used to compute [Feynman-Kac type expectations](https://planetmath.org/feynmankacformula) of the form
 
 $$ v(t,x) = \mathbf{E}[e^{-\int_t^TV(s,X_s)\,ds}\psi(X_T);g_{-}(s) < X_s < g_+(s), s \in [t,T] | X_t = x], $$
