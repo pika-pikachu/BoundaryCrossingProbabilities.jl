@@ -163,8 +163,10 @@ non_crossing_probability, v = BoundaryCrossingProbabilities.BKE(p, t -> gU(t), t
 
 ## Sensitivity of boundary crossing probabilities with respect to boundary perturbations
 
-It was proved by Liang and Borovkov (2024) that the boundary non-crossing probability functional $F(g) := F(-\infty,g)$ is Gateaux differentiable and the derivative admits the following representation:
+It was proved by Liang and Borovkov (2025) that the boundary non-crossing probability functional $F(g) := F(-\infty,g)$ is Gateaux differentiable and the derivative admits the following representation:
 
 $$ \nabla_h F(g) := \lim_{\varepsilon \to 0}\frac{F(g+\varepsilon h) -F(g) }{\varepsilon} = -\int_0^T h(t)v'(t,g(t))f_{\tau}(t)dt,\quad h \in H, \quad g \in C^2.$$
+
+[Liang, V. and Borovkov, K.: On time-dependent boundary crossing probabilities of diffusion processes as differentiable functionals of the boundary. Stochastic Process. Appl. <b>190</b>, 104742 (2025).](https://doi.org/10.1016/j.spa.2025.104742)
 
 The Markov chain approximation can be used to obtain approximations for $v'(t,g(t))$ and $f_{\tau}(t)$ for all $t \in [0,T].$
